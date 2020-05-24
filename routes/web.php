@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('movies/create', 'Admin\MoviesController@add');
+    Route::get('movies/edit', 'Admin\MoviesController@edit');
+    Route::get('movies/delete', 'Admin\MoviesController@delete');
+});
