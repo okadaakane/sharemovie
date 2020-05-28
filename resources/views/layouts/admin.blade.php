@@ -33,7 +33,7 @@
         <div class="content">
         </div>
     </div>
-         <p>このサイトを活用して快適に過ごしませんか。</p>   
+    <p>このサイトを活用して快適に過ごしませんか。</p>   
         
         <div id="app">
             {{-- 画面上部ナビゲーションバー --}}
@@ -48,6 +48,20 @@
             <main class="py-4">
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
+                
+                <!--logoutを作る-->
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </div>
+                
             </main>
         </div>
         <footer>

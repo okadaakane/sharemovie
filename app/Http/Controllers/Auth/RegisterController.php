@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -49,9 +50,9 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
+            'goal' => ['required', 'string', 'goal', 'max:255'],
+            
         ]);
     }
 
@@ -65,8 +66,24 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'goal' => $data['goal'],
         ]);
     }
+    
+    //登録済ユーザーの認証するguard
+    protected function guard()
+    {
+    return Auth::guard('guard-name');
+    }
+    
+        public function authenticate(Request $request)
+    {
+        $credentials = $request->only('name', 'goal');
+
+        if (Auth::attempt($credentials)) {
+            // 認証に成功した
+            return redirect()->intended('dashboard');
+        }
+    }
+  
 }

@@ -16,8 +16,14 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' =>'auth'], function() {
     Route::get('movies/create', 'Admin\MoviesController@add');
+    Route::post('movies/create','Admin\MoviesController@create');
     Route::get('movies/edit', 'Admin\MoviesController@edit');
     Route::get('movies/delete', 'Admin\MoviesController@delete');
 });
+Auth::routes([
+  'register' => true, // ユーザー登録 
+]);
+ 
+Route::get('/home', 'HomeController@index')->name('home');

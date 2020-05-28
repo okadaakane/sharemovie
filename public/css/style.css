@@ -1,6 +1,6 @@
     
 body {
-    margin: 150px ;
+    margin: 20px ;
     padding: 0;
     background-color: #FFFAF0;
     color: #1C1C1C;
@@ -10,6 +10,9 @@ body {
 }
 p,h1,h2,h3,h4,h5,h6 {
     margin-top: 0;
+}
+p{
+    float: left;
 }
 #index h1 {
     font-size: 50px;
@@ -27,6 +30,7 @@ a:visited{
 a:hover {
     text-decoration: underline;
 }
+/*stepボタンに変化をつける*/
 .btn a {
     background-color: #52BCDE;
     color: #FFFFFF;
@@ -39,6 +43,7 @@ a:hover {
     border-radius: 5px;
     border: 3px solid #009cd3;
 }
+
 .btn a:hover{
     text-decoration: none;
     background-color:#FFFFFF;
@@ -47,6 +52,7 @@ a:hover {
 .global-nav {
     margin-top: 0;
     padding: 0;
+    
 }
 .ul {
     margin: 0;
@@ -65,12 +71,12 @@ a:hover {
 
 
 .content {
-    width: 960px;
-    margin: 0 auto;
+    width: 500px;
+    margin: 5px;
 }
 .content logo{
     display: block;
-    float: left;
+    text-align: left;
 }
 
 footer {
