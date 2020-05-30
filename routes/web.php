@@ -26,5 +26,9 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth'], function() {
 
 });
 
-Auth::routes();
+Auth::routes([
+ //'verify'   => true, // メール確認機能いらない（※5.7系以上のみ）
+    'register' => true, // デフォルトの登録機能ON
+  // 'reset'    => true,  // メールリマインダー機能いらない
+]);
 Route::get('/home', 'HomeController@index')->name('home');

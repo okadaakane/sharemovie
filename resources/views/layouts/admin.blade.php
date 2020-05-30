@@ -39,9 +39,9 @@
             {{-- 画面上部ナビゲーションバー --}}
             <nav>
                 <ul class="global-nav clearfix">
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                    <li><a href="{{ url('/home') }}">Home</a></li>
                 </ul>
             </nav>
                 {{-- ここまでナビゲーションバー --}}

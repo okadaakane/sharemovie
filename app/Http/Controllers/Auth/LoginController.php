@@ -37,14 +37,13 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    public function username()
-    {
-    return 'name';
-    }
-   // login後
- //   public function redirectPath()
+ //   public function username()
  //   {
-  //      return 'movies/shuffle';
-  //  }
-    
+  //  return 'name';
+ //   }
+    //  public function redirectPath()
+//    {
+//        return 'movies/shuffle';
+        //例）return 'costs/index';
+ //   }
 }
