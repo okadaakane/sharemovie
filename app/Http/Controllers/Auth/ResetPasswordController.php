@@ -38,8 +38,8 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
     //登録済ユーザーの認証するguard
-     protected function guard()
-    {
-    return Auth::guard('guard-name');
-    }
+//     protected function guard()
+ //   {
+//    return Auth::guard('guard-name');
+//    }
 }

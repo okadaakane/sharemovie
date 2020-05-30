@@ -27,10 +27,23 @@ class MoviesController extends Controller
      return redirect('admin/movies/create');
     }
 
-
+ public function shuffle(Request $request)
+  {
+      $cond_goal = $request->cond_goal;
+      if ($cond_goal != '') {
+          // 検索されたら検索結果を取得する
+          $posts = Movies::where('goal', $cond_goal)->get();
+      } else {
+          // それ以外はすべてのニュースを取得する
+          $posts = Movies::all();
+      }
+      //cond 条件付きの
+      return view('admin.movies.shuffle', ['posts' => $posts, 'goal' => $cond_goal]);
+  }
+  
     public function edit()
     {
-        return view('admin.movies.edit');
+        return view('admin.movies.shuffle');
     }
     public function delete ()
     {

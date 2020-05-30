@@ -41,11 +41,10 @@ class LoginController extends Controller
     {
     return 'name';
     }
+   // login後
+ //   public function redirectPath()
+ //   {
+  //      return 'movies/shuffle';
+  //  }
     
-    //登録済ユーザーの認証するguard
-    protected function guard()
-    {
-    return Auth::guard('guard-name');
-    }
-
 }

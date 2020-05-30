@@ -51,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255', 'unique:users'],
-            'goal' => ['required', 'string', 'goal', 'max:255'],
+            'setgoal' => ['required', 'string', 'max:255'],
             
         ]);
     }
@@ -66,24 +66,19 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'goal' => $data['goal'],
+            'setgoal' => $data['setgoal'],
         ]);
     }
-    
-    //登録済ユーザーの認証するguard
-    protected function guard()
-    {
-    return Auth::guard('guard-name');
-    }
-    
-        public function authenticate(Request $request)
-    {
-        $credentials = $request->only('name', 'goal');
+   
+//        public function authenticate(Request $request)
+//     {
+        //証明
+//        $credentials = $request->only('name', 'setgoal');
 
-        if (Auth::attempt($credentials)) {
-            // 認証に成功した
-            return redirect()->intended('dashboard');
-        }
-    }
+//        if (Auth::attempt($credentials)) {
+//            // intend意図する
+//            return redirect()->intended('dashboard');
+//        }
+//    }
   
 }
