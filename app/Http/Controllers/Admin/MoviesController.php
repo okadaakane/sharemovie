@@ -33,9 +33,11 @@ class MoviesController extends Controller
       if ($cond_goal != '') {
           // 検索されたら検索結果を取得する
         //村田先生の助言 $posts = Auth::user()->goals;
+        //Authモデル、Userモデルどちらもok?naze
         $posts = Auth::user()->setgoals;
+      } else {
           //モデル単数形
-        $posts = Auth::all();
+        $posts = Movie::all();
       }
       //cond 条件付きの
       return view('admin.movies.shuffle', ['posts' => $posts, 'setgoal' => $cond_goal]

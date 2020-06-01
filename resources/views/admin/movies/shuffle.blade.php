@@ -15,10 +15,10 @@
                             <!-- table header -->
                             <th width="20%">目標</th>
                         </table>
-<!--                        @foreach($posts as $movies)
+                        @foreach($posts as $movies)
                             <th>{{ $cond_goal->setgoal }}</th>
                         @endforeach
-                    </table>                         -->
+                    </table>                        
                 </div>
             </div>
         </div>
