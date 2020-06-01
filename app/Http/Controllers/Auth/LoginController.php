@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/movies/shuffle';//リダイレクト先
 
     /**
      * Create a new controller instance.
@@ -37,13 +37,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
- //   public function username()
- //   {
-  //  return 'name';
- //   }
-    //  public function redirectPath()
-//    {
-//        return 'movies/shuffle';
-        //例）return 'costs/index';
- //   }
+        
+    
 }

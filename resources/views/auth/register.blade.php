@@ -26,10 +26,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="goal" class="col-md-4 col-form-label text-md-right">{{ __('Goal') }}</label>
+                            <label for="goal" class="col-md-4 col-form-label text-md-right">{{ __('setGoal') }}</label>
 
                             <div class="col-md-6">
-                                <input id="goal" type="text" class="form-control @error('goal') is-invalid @enderror" name="goal" value="{{ old('goal') }}" >
+                                <input id="setgoal" type="text" class="form-control @error('setgoal') is-invalid @enderror" name="setgoal" value="{{ old('setgoal') }}" >
                             </div>
                         </div>
                         <div class="form-group row mb-0">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSetgoalTable extends Migration
+class CreateMoviesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateSetgoalTable extends Migration
      */
     public function up()
     {
-        Schema::create('setgoal', function (Blueprint $table) {
+        Schema::create('movies', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');//nameで目標設定できる仕組み
-            $table->string('goal')->nullable;
+            $table->string('setgoal');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateSetgoalTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setgoal');
+        Schema::dropIfExists('movies');
     }
 }

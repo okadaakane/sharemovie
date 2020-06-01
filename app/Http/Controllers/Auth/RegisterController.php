@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'admin/movies/shuffle';
 
     /**
      * Create a new controller instance.
@@ -51,7 +51,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255', 'unique:users'],
-            'setgoal' => ['required', 'string', 'max:255'],
+            'setgoal' => ['max:255'],
             
         ]);
     }
@@ -66,7 +66,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
-            'setgoal' => $data['setgoal'],
+            'setgoal' => $data['setgoal'],//nameの不一致でエラー発生
         ]);
     }
    

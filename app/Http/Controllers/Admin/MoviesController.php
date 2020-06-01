@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 //modelを使えるようにする
-use App\Movies;
+use App\Movie;
 
 class MoviesController extends Controller
 {
@@ -17,12 +17,12 @@ class MoviesController extends Controller
 
     public function create (Request $request)
     {
-     $this->validate($request,Movies::$rules);
-     $movies = new Movies;
-     $foem = $request->all();
+     $this->validate($request,Movie::$rules);
+     $movies = new Movie;
+     $form = $request->all();
      unset($form['_token']);
-     $news->fill($form);
-     $news->save();
+     $movies->fill($form);
+     $movies->save();
      
      return redirect('admin/movies/create');
     }
@@ -32,19 +32,27 @@ class MoviesController extends Controller
       $cond_goal = $request->cond_goal;
       if ($cond_goal != '') {
           // 検索されたら検索結果を取得する
-          $posts = Movies::where('goal', $cond_goal)->get();
-      } else {
-          // それ以外はすべてのニュースを取得する
-          $posts = Movies::all();
+        //村田先生の助言 $posts = Auth::user()->goals;
+        $posts = Auth::user()->setgoals;
+          //モデル単数形
+        $posts = Auth::all();
       }
       //cond 条件付きの
-      return view('admin.movies.shuffle', ['posts' => $posts, 'goal' => $cond_goal]);
+      return view('admin.movies.shuffle', ['posts' => $posts, 'setgoal' => $cond_goal]
+     );
   }
   
     public function edit()
     {
-        return view('admin.movies.shuffle');
+        $movies = Movie::find($request->setgoal);
+        if (empty($movies)) {
+        abort(404);    
     }
+      return view('admin.news.edit', ['setgoal' => $setgoal]);
+    }
+    
+    
+    
     public function delete ()
     {
         return view('admin.movies.delete');

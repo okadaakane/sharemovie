@@ -15,13 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//urlにアクセスが来たとき
 
 Route::group(['prefix' => 'admin', 'middleware' =>'auth'], function() {
     Route::get('movies/create', 'Admin\MoviesController@add');
     Route::post('movies/create','Admin\MoviesController@create');
     Route::get('movies/edit', 'Admin\MoviesController@edit');
     Route::post('movies/edit', 'Admin\MoviesController@update');
-    Route::get('movies', 'Admin\MoviesController@shuffle');
+    Route::get('movies/shuffle', 'Admin\MoviesController@shuffle');
+    Route::post('movies/shuffle','Admin\MoviesController@shuffle');
     Route::get('movies/delete', 'Admin\MoviesController@delete');
 
 });
@@ -29,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' =>'auth'], function() {
 Auth::routes([
  //'verify'   => true, // メール確認機能いらない（※5.7系以上のみ）
     'register' => true, // デフォルトの登録機能ON
+ //   'login' => true,
   // 'reset'    => true,  // メールリマインダー機能いらない
 ]);
 Route::get('/home', 'HomeController@index')->name('home');

@@ -11,19 +11,19 @@
             <div class="list-news col-md-12 mx-auto">
                 <div class="row">
                     <table class="table table-dark">
-                            <table>
-                                <!-- table header -->
-                                <th width="20%">目標</th>
-                            </table>
-                            @foreach($posts as $movies)
-                                <th>{{ $cond_goal->goal }}</th>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <table>
+                            <!-- table header -->
+                            <th width="20%">目標</th>
+                        </table>
+<!--                        @foreach($posts as $movies)
+                            <th>{{ $cond_goal->setgoal }}</th>
+                        @endforeach
+                    </table>                         -->
                 </div>
             </div>
         </div>
     </div>
+    <a href="{{ action('Admin\MoviesController@edit', ['setgoals' => $setgoal]) }}">編集</a>
 @endsection
 
 
