@@ -26,12 +26,12 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="goal" class="col-md-4 col-form-label text-md-right">{{ __('Goal') }}</label>
+                            <label for="goal" class="col-md-4 col-form-label text-md-right">{{ __('setGoal') }}</label>
 
                             <div class="col-md-6">
-                                <input id="goal" type="text" class="form-control @error('goal') is-invalid @enderror" name="goal" value="{{ old('goal') }}" required>
+                                <input id="setgoal" type="text" class="form-control @error('setgoal') is-invalid @enderror" name="setgoal" value="{{ old('setgoal') }}">
 
-                                @error('goal')
+                                @error('setgoal')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

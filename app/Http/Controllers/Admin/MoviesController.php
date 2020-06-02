@@ -27,36 +27,43 @@ class MoviesController extends Controller
      return redirect('admin/movies/create');
     }
 
- public function shuffle(Request $request)
+ public function shuffle (Request $request)
   {
       $cond_goal = $request->cond_goal;
       if ($cond_goal != '') {
-          // 検索されたら検索結果を取得する
         //村田先生の助言 $posts = Auth::user()->goals;
-        //Authモデル、Userモデルどちらもok?naze
-        $posts = Auth::user()->setgoals;
-      } else {
+        $posts = Movie::fillable()->setgoals;
+        } else {
           //モデル単数形
         $posts = Movie::all();
       }
       //cond 条件付きの
       return view('admin.movies.shuffle', ['posts' => $posts, 'setgoal' => $cond_goal]
-     );
-  }
+        );
+    }
   
-    public function edit()
+   public function update ()
     {
-        $movies = Movie::find($request->setgoal);
-        if (empty($movies)) {
-        abort(404);    
+        return view('admin.movies.shuffle');
     }
-      return view('admin.news.edit', ['setgoal' => $setgoal]);
-    }
+    
+//    public function edit()
+//    {
+//        $movies = Movie::find($request->setgoal);
+//        if (empty($movies)) {
+//        abort(404);    
+//    }
+//      return view('admin.news.edit', ['setgoal' => $setgoal]);
+//    }
     
     
     
     public function delete ()
     {
-        return view('admin.movies.delete');
+        // 該当するMovie Modelを取得
+          $posts = Movie::find($table->setgoal);
+          // 削除する
+          $posts->setgoal::delete();
+          return redirect('admin/movies/shuffle');
     }
 }

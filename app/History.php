@@ -1,4 +1,5 @@
 <?php
+/*要らないので削除
 
 namespace App;
 

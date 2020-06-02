@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/movies/shuffle';
+    protected $redirectTo = 'admin/movies/shuffle';//redirect先
 
     /**
      * Create a new controller instance.
@@ -69,16 +69,5 @@ class RegisterController extends Controller
             'setgoal' => $data['setgoal'],//nameの不一致でエラー発生
         ]);
     }
-   
-//        public function authenticate(Request $request)
-//     {
-        //証明
-//        $credentials = $request->only('name', 'setgoal');
-
-//        if (Auth::attempt($credentials)) {
-//            // intend意図する
-//            return redirect()->intended('dashboard');
-//        }
-//    }
   
 }

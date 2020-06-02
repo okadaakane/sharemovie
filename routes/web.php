@@ -20,10 +20,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin', 'middleware' =>'auth'], function() {
     Route::get('movies/create', 'Admin\MoviesController@add');
     Route::post('movies/create','Admin\MoviesController@create');
-    Route::get('movies/edit', 'Admin\MoviesController@edit');
-    Route::post('movies/edit', 'Admin\MoviesController@update');
-    Route::get('movies/shuffle', 'Admin\MoviesController@shuffle');
-    Route::post('movies/shuffle','Admin\MoviesController@shuffle');
+    Route::post('movies/shuffle', 'Admin\MoviesController@update');
+    Route::get('movies/shuffle','Admin\MoviesController@shuffle');
     Route::get('movies/delete', 'Admin\MoviesController@delete');
 
 });
