@@ -18,15 +18,17 @@ class MoviesController extends Controller
     public function create (Request $request)
     {
      $this->validate($request,Movie::$rules);
-     $movies = new Movie;
+     $movie = new Movie;
      $form = $request->all();
      unset($form['_token']);
-     $movies->fill($form);
-     $movies->save();
+     $movie->fill($form);
+     $movie->save();
      
-     return redirect('admin/movies/create');
+     return redirect('admin/movies/shuffle');
     }
 
+
+/*index actionと同じ役割*/
  public function shuffle (Request $request)
   {
       $cond_goal = $request->cond_goal;
@@ -58,12 +60,12 @@ class MoviesController extends Controller
     
     
     
-    public function delete ()
+    public function delete (Request $request)
     {
         // 該当するMovie Modelを取得
-          $posts = Movie::find($table->setgoal);
-          // 削除する
-          $posts->setgoal::delete();
+        $movie = Movie::find($request->id);
+        // 削除する
+        $movie->delete();
           return redirect('admin/movies/shuffle');
     }
 }

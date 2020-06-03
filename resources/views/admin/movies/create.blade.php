@@ -4,33 +4,17 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-               <h1>Life is beautiful!</h1>
-               
-                   
-                    <!--エラーがあったら入力フォームへ戻る-->
-        <!--               @if(count($errors) > 0)
-                       <ul>
-                           @foreach($errors->all() as $e)
-                           <li>{{ $e }} </li>
-                           @endforeach
-                        </ul>
-                    @endif                                    -->
-                    
-                
+                <h1>Life is beautiful!</h1>
+                <form action="{{ action('Admin\MoviesController@add') }}" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
-                        <label for="setgoal" class="col-md-4 col-form-label text-md-right">{{ __('Goal') }}</label>
+                        <label class="col-md-6">目標を入力してみましょう！</label>
                         <div class="col-md-6">
-                           <input id="setgoal" type="text" class="form-control @error('setgoal') is-invalid @enderror" name="setgoal" value="{{ old('setgoal') }}" required>   
+                            <input type="text" class="form-control" name="setgoal" value="{{ old('setgoal') }}">
                         </div>
                     </div>
-                    <h2>
-                        <div class="form-group row mb-0">
-                            <p class=btn><a href="/admin/movies/shuffle">
-                                {{ __('step up') }}</a>
-                            </p>
-                        </div>
-                    </h2>
-                </div> 
+                    {{ csrf_field() }}
+                    <input type="submit" class="btn btn-primary" value="Add">
+                </form>
             </div>
         </div>
     </div>

@@ -6,49 +6,63 @@
         <div class="row">
             <h2>What is your goal from now on?</h2>
         </div>
+        <form action="{{ action('Admin\MoviesController@create') }}" method="post" enctype="multipart/form-data">
+            @if (count($errors) > 0)
+                <ul>
+                    @foreach($errors->all() as $e)
+                        <li>{{ $e }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="setgoal" value="{{ old('setgoal') }}">
+                </div>
+            </div>
+            {{ csrf_field() }}
+            <input type="submit" class="btn btn-primary" value="Add">
+        </form>
        
         <div class="row">
-            <div class="list-news col-md-12 mx-auto">
+            <div class="list-news col-md-6 mx-auto">
                 <div class="row">
                     <table class="table table-dark">
                         <table>
                             <!-- table header -->
-                               @foreach($posts as $movies)
+                               @foreach($posts as $movie)
                                 <tr>
-                                    <th> $movies->id </th>
-                                    <td> ($movies->name, 100) </td>
-                                    <td>{{ \Str::limit($movies->setgoal, 250) }}</td>
+                                    <th>{{ 1. }}</th>
+                                    <td>{{ ($movie->setgoal) }}</td>
+                                    <td>
+                                        <a href="{{ action('Admin\MoviesController@delete', ['id' => $movie->id]) }}">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                     </table>                        
                 </div>
-            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label for="setgoal" class="col-md-4 col-form-label text-md-right">{{ __('Goal') }}</label>
-        <div class="col-md-6">
-           <input id="setgoal" type="text" class="form-control @error('setgoal') is-invalid @enderror" name="setgoal" value="{{ old('setgoal') }}" required>   
-        </div>
-    </div>
-    <h2>
-        <div class="form-group row mb-0">
-            <p class=btn><a href="{{ action('Admin\MoviesController@update', ['setgoal' => $setgoal]) }}">
-                {{ __('追加') }}</a>
-            </p>
-        </div>
-    </h2>
-     <h2>
-        <div class="form-group row mb-0">
-            <p class=btn><a href="{{ action('Admin\MoviesController@delete', ['setgoal' => $setgoal]) }}">
-                {{ __('削除') }}</a>
-            </p>
-        </div>
-    </h2>
-@endsection
+ 
 <!-- ランダムでメッセージを出す -->
-@section('layouts.shufflemessage')
+<p class="shufflemessage">
+<?php
 
+$fortune = array(
+   "いい感じ！", 
+   "この調子で！", 
+   "頑張りすぎなくていいんだよ！",
+   "今日も達成！",
+   "素晴らしい！",
+);
 
+$count  = count($fortune);
+$random = rand(0, $count - 1);
+
+echo $fortune[$random];
+
+?>
+</p>
+
+@endsection
 
 

@@ -41,7 +41,7 @@
                 <ul class="global-nav clearfix">
                     <li><a href="{{ route('login') }}">Login</a></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('admin/movies/shuffle') }}">Home</a></li>
                 </ul>
             </nav>
                 {{-- ここまでナビゲーションバー --}}

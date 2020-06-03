@@ -85,7 +85,10 @@ a:hover {
     display: block;
     text-align: left;
 }
-
+/*シャップルメッセージを真ん中に*/
+.shufflemessage{
+    text-align: center;
+}
 
 
 footer {

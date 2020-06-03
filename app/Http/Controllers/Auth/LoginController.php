@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '（admin/movies/shuffle）';//リダイレクト先
+    protected $redirectTo = 'admin/movies/shuffle';//リダイレクト先
 
     /**
      * Create a new controller instance.
@@ -38,18 +38,5 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
- //   /**
- //    * Get a validator for an incoming login request.
- //    *
- //    * @param  array  $data
- //    * @return \Illuminate\Contracts\Validation\Validator
- //    */
- //   protected function validator(array $data)
- //   {
- //       return Validator::make($data, [
- //           'name' => ['required', 'string', 'max:255', 'unique:users'],
- //           'setgoal' => ['max:255'],
- //           
- //       ]);
- //   }    
+   
 }
