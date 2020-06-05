@@ -16,7 +16,7 @@ class CreatePasswordResetsTable extends Migration
         //テーブル名は複数
         Schema::create('password_resets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->unique();//nameで目標設定できる仕組み
+            $table->unique('name');//nameで目標設定できる仕組み
             $table->string('setgoal');
             $table->timestamps();
         });

@@ -19,6 +19,8 @@ class LoginController extends Controller
     |
     */
 
+
+
     use AuthenticatesUsers;
 
     /**
@@ -26,7 +28,20 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'admin/movies/shuffle';//リダイレクト先
+    protected $redirectToAfterLogin ='/admin/movies/create';
+
+    /**
+     * login
+     */
+    public function login()
+    {
+//     $validator = $this->validate([       // <-- ここがバリデーション部分
+  //      'name' => ['required', 'string', 'max:255', 'unique:users'],
+    //]);
+      //  $user = User::find('name', $data->id);
+        //User::login();
+       // return redirect($this->redirectToAfterLogin);
+    }
 
     /**
      * Create a new controller instance.
@@ -37,6 +52,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    
-   
+    public function username()
+    {
+      return 'name';
+    }
+  
 }
+

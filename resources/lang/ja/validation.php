@@ -146,7 +146,7 @@ return [
     */
 
     'attributes' => [
-        'Name' =>'お名前',
+        'Name' =>'名前',
         'Goal' =>'目標'
         ]
 

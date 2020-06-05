@@ -10,10 +10,12 @@
                         <label class="col-md-6">目標を入力してみましょう！</label>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="setgoal" value="{{ old('setgoal') }}">
+                            @csrf
                         </div>
                     </div>
-                    {{ csrf_field() }}
+                   
                     <input type="submit" class="btn btn-primary" value="Add">
+                    @csrf
                 </form>
             </div>
         </div>

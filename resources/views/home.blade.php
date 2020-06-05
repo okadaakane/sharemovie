@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('layouts.admin')
+<link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+<!--  cssはベースのstyle.cssを使う   -->
+<link href="{{ secure_asset('css/style.css') }}" rel="stylesheet">
 @section('content')
                     {{-- ここまでナビゲーションバー --}}
 

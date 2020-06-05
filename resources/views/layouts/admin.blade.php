@@ -7,10 +7,10 @@
 
         <title>fullscreenpage</title>
         <!-- CSRF Token -->
-         {{-- 後の章で説明します --}}
+       
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        {{-- 各ページごとにtitleタグを入れるために@yieldで空けておきます。 --}}
+        
         <title>@yield('title')</title>
 
         <!-- Scripts -->
@@ -38,8 +38,17 @@
         <div id="app">
             {{-- 画面上部ナビゲーションバー --}}
             <nav>
+                    
                 <ul class="global-nav clearfix">
                     <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                     document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form></li>
                     <li><a href="{{ route('register') }}">Register</a></li>
                     <li><a href="{{ url('admin/movies/shuffle') }}">Home</a></li>
                 </ul>
@@ -49,19 +58,7 @@
                 {{-- コンテンツをここに入れるため、@yieldで空けておきます。 --}}
                 @yield('content')
                 
-                <!--logoutを作る-->
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
-                                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-                
             </main>
         </div>
         <footer>

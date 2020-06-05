@@ -5,21 +5,16 @@
     <div class="container">
         <div class="row">
             <h2>What is your goal from now on?</h2>
+            <h3> こんにちは！{{ Auth::user()->name }}さん!<br /><br /></h3>
         </div>
-        <form action="{{ action('Admin\MoviesController@create') }}" method="post" enctype="multipart/form-data">
-            @if (count($errors) > 0)
-                <ul>
-                    @foreach($errors->all() as $e)
-                        <li>{{ $e }}</li>
-                    @endforeach
-                </ul>
-            @endif
+        <form action="{{ action('Admin\MoviesController@add') }}" method="post" enctype="multipart/form-data">
+                
             <div class="form-group row">
                 <div class="col-md-6">
                     <input type="text" class="form-control" name="setgoal" value="{{ old('setgoal') }}">
+                    @csrf
                 </div>
             </div>
-            {{ csrf_field() }}
             <input type="submit" class="btn btn-primary" value="Add">
         </form>
        
@@ -28,7 +23,7 @@
                 <div class="row">
                     <table class="table table-dark">
                         <table>
-                            <!-- table header -->
+                                <!-- table header -->
                                @foreach($posts as $movie)
                                 <tr>
                                     <th>{{ 1. }}</th>
@@ -37,7 +32,7 @@
                                         <a href="{{ action('Admin\MoviesController@delete', ['id' => $movie->id]) }}">Delete</a>
                                     </td>
                                 </tr>
-                            @endforeach
+                                @endforeach
                     </table>                        
                 </div>
         </div>

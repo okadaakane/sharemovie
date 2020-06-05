@@ -11,7 +11,13 @@ class MoviesController extends Controller
 {
       public function add()
     {
-        return view('admin.movies.create');
+        $movie = new Movie;
+        $form = $request->all();
+        unset($form['_token']);
+        $movie->fill($form);
+        $movie->save();
+        
+        return view('admin.movies.shuffle');
         
     }
 

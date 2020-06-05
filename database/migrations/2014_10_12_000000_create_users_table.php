@@ -15,7 +15,7 @@ class CreateMoviesTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->unique('name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateMoviesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movies');
+        Schema::dropIfExists('users');
     }
 }
