@@ -4,18 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 //modelを使えるようにする
 use App\Movie;
 
 class MoviesController extends Controller
 {
-      public function add()
+      public function add ()
     {
-        $movie = new Movie;
-        $form = $request->all();
-        unset($form['_token']);
-        $movie->fill($form);
-        $movie->save();
         
         return view('admin.movies.shuffle');
         
@@ -23,12 +19,16 @@ class MoviesController extends Controller
 
     public function create (Request $request)
     {
-     $this->validate($request,Movie::$rules);
-     $movie = new Movie;
-     $form = $request->all();
-     unset($form['_token']);
-     $movie->fill($form);
-     $movie->save();
+     
+        $this->validate($request, Movie::$rules);
+        $form = $request->all();
+        unset($form['_token']);
+        $movie = new Movie;
+        $movie->fill($form);
+        $movie->user_id = Auth::id();
+      
+        $movie->save();
+        
      
      return redirect('admin/movies/shuffle');
     }
@@ -36,19 +36,17 @@ class MoviesController extends Controller
 
 /*index actionと同じ役割*/
  public function shuffle (Request $request)
-  {
-      $cond_goal = $request->cond_goal;
-      if ($cond_goal != '') {
-        //村田先生の助言 $posts = Auth::user()->goals;
-        $posts = Movie::fillable()->setgoals;
-        } else {
-          //モデル単数形
-        $posts = Movie::all();
-      }
-      //cond 条件付きの
-      return view('admin.movies.shuffle', ['posts' => $posts, 'setgoal' => $cond_goal]
-        );
+ {
+    $movies = array();
+    $count = 1; 
+    foreach(Auth::user()->movies as $movie){
+        $arr = array((string)$count, $movie);
+        array_push($movies, $arr);
+        $count += 1;
     }
+  
+    return view('admin.movies.shuffle',['movies'=>$movies]);
+  }
   
    public function update ()
     {

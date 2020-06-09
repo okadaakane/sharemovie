@@ -62,12 +62,15 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
+   
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
-            'setgoal' => $data['setgoal'],//nameの不一致でエラー発生
         ]);
     }
+  
+  
+  
   
 }

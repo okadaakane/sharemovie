@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         
-                            <!--remember me を追加-->
+                            <!--remember me -->
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">

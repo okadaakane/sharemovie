@@ -7,8 +7,8 @@
             <h2>What is your goal from now on?</h2>
             <h3> こんにちは！{{ Auth::user()->name }}さん!<br /><br /></h3>
         </div>
-        <form action="{{ action('Admin\MoviesController@add') }}" method="post" enctype="multipart/form-data">
-                
+        <form action="{{ action('Admin\MoviesController@create') }}" method="post" enctype="multipart/form-data">
+                   
             <div class="form-group row">
                 <div class="col-md-6">
                     <input type="text" class="form-control" name="setgoal" value="{{ old('setgoal') }}">
@@ -24,12 +24,12 @@
                     <table class="table table-dark">
                         <table>
                                 <!-- table header -->
-                               @foreach($posts as $movie)
+                               @foreach($movies as $movie)
                                 <tr>
-                                    <th>{{ 1. }}</th>
-                                    <td>{{ ($movie->setgoal) }}</td>
+                                    <th>{{ $movie[0] }}</th>
+                                    <td>{{ $movie[1]->setgoal }}</td>
                                     <td>
-                                        <a href="{{ action('Admin\MoviesController@delete', ['id' => $movie->id]) }}">Delete</a>
+                                        <a href="{{ action('Admin\MoviesController@delete', ['id' => $movie[1]->id]) }}">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

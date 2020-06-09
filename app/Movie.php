@@ -9,7 +9,6 @@ class Movie extends Model
     //requiredは必須
     protected $guarded =array('id');
     public static $rules =array(
-        'name' =>'required',
-        'setgoal' => 'nullable',
+        'setgoal' => 'required',
         );
 }

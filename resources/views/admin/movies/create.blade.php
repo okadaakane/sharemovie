@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h1>Life is beautiful!</h1>
-                <form action="{{ action('Admin\MoviesController@add') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ action('Admin\MoviesController@create') }}" method="post" enctype="multipart/form-data">
                     <div class="form-group row">
                         <label class="col-md-6">目標を入力してみましょう！</label>
                         <div class="col-md-6">
@@ -20,4 +20,4 @@
             </div>
         </div>
     </div>
-@endsection
+@endsection0
