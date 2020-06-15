@@ -26,10 +26,10 @@
                                 <!-- table header -->
                                @foreach($movies as $movie)
                                 <tr>
-                                    <th>{{ $movie[0] }}</th>
-                                    <td>{{ $movie[1]->setgoal }}</td>
+                                    <th>{{ $loop->iteration }}</th>
+                                    <td>{{ $movie->setgoal }}</td>
                                     <td>
-                                        <a href="{{ action('Admin\MoviesController@delete', ['id' => $movie[1]->id]) }}">Delete</a>
+                                        <a href="{{ action('Admin\MoviesController@delete', ['id' => $movie->id]) }}">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach

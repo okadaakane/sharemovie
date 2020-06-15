@@ -37,13 +37,15 @@ class MoviesController extends Controller
 /*index actionと同じ役割*/
  public function shuffle (Request $request)
  {
-    $movies = array();
-    $count = 1; 
-    foreach(Auth::user()->movies as $movie){
-        $arr = array((string)$count, $movie);
-        array_push($movies, $arr);
-        $count += 1;
-    }
+    $movies = Movie::where('user_id', Auth::id())->orderBy('created_at', 'asc')->get();
+    
+    //  $count = 1; 
+    
+    // foreach(Auth::user()->movies as $movie){
+    //     $arr = array((string)$count, $movie);
+    //     array_push($movies, $arr);
+    //     $count += 1;
+    // }
   
     return view('admin.movies.shuffle',['movies'=>$movies]);
   }
