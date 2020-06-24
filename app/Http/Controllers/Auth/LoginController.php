@@ -28,31 +28,9 @@ class LoginController extends Controller
      *
      * @var string
      */
-     protected $redirectTo = '/admin/movies/shuffle';
+     protected $redirectTo = ('/admin/movies/shuffle');
 
 
-    // /**
-    //  * login
-    //  */
-    //  public function login(Request $request) //requestはnameが入る
-    //  {
-    //   \Debugbar::info("test");//
-    //   $this->validateLogin($request); //上書き
-     
-    //   return redirect('/admin/movies/shuffle');
-    //   }
-    
-//    protected function validateLogin(Request $request)
-//   {        
-//      $this->validate($request, [
-//      $this->username() => 'required|string',
-//        ]);
-//    }
-
-    // protected function credentials(Request $request)
-    // {
-    //     return array_merge($request->only($this->username()));
-    // }
 
 
     /**

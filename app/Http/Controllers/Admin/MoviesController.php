@@ -30,7 +30,7 @@ class MoviesController extends Controller
         $movie->save();
         
      
-     return redirect('admin/movies/shuffle');
+     return redirect('admin/movies/shuffle',['movie'=> $movie]);
     }
 
 
@@ -39,13 +39,7 @@ class MoviesController extends Controller
  {
     $movies = Movie::where('user_id', Auth::id())->orderBy('created_at', 'asc')->get();
     
-    //  $count = 1; 
-    
-    // foreach(Auth::user()->movies as $movie){
-    //     $arr = array((string)$count, $movie);
-    //     array_push($movies, $arr);
-    //     $count += 1;
-    // }
+   
   
     return view('admin.movies.shuffle',['movies'=>$movies]);
   }
@@ -55,17 +49,7 @@ class MoviesController extends Controller
         return view('admin.movies.shuffle');
     }
     
-//    public function edit()
-//    {
-//        $movies = Movie::find($request->setgoal);
-//        if (empty($movies)) {
-//        abort(404);    
-//    }
-//      return view('admin.news.edit', ['setgoal' => $setgoal]);
-//    }
-    
-    
-    
+
     public function delete (Request $request)
     {
         // 該当するMovie Modelを取得

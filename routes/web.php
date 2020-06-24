@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 //urlにアクセスが来たとき
@@ -44,4 +44,4 @@ Auth::routes();
 // Route::post('members/password/reset', 'Auth\ResetPasswordController@reset');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'Controller@index')->name('home');
