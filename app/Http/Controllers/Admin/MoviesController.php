@@ -30,7 +30,7 @@ class MoviesController extends Controller
         $movie->save();
         
      
-     return redirect('admin/movies/shuffle',['movie'=> $movie]);
+     return redirect('admin/movies/shuffle');
     }
 
 
@@ -38,10 +38,7 @@ class MoviesController extends Controller
  public function shuffle (Request $request)
  {
     $movies = Movie::where('user_id', Auth::id())->orderBy('created_at', 'asc')->get();
-    
-   
-  
-    return view('admin.movies.shuffle',['movies'=>$movies]);
+    return view('admin.movies.shuffle',['movies' => $movies]);
   }
   
    public function update ()
