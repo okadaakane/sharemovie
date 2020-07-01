@@ -28,10 +28,17 @@ class LoginController extends Controller
      *
      * @var string
      */
-     protected $redirectTo = ('/admin/movies/shuffle');
-
-
-
+    protected $redirectTo = '/admin/movies/shuffle';
+     
+    //  protected function redirectTo() {
+    //   if(!Auth::user()) {
+    //   return redirect('/admin/movie/shuffle', ['user' => Auth::id()]);
+    // }
+    // }
+    // public function redirectPath()
+    // {
+    //     return '/admin/movies/shuffle';
+    // }
 
     /**
      * Create a new controller instance.
@@ -54,5 +61,4 @@ class LoginController extends Controller
     //   );
     // }
     
-
 }
